@@ -40,7 +40,7 @@ async function callApi() {
   };
 };
 
-gladys.onAction("test_server", callApi());
+gladys.onAction("test_server", () => callApi());
 
 
 
