@@ -7,7 +7,7 @@
     "fr": "Nodejs API server for running external scripts."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/mgrafr/glady-serve-api-js:1.0.0",
+  "docker_image": "ghcr.io/mgrafr/gladys-serve-api-js:1.0.0",
   "gladys_version": ">=4.86.0",
   "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
   "categories": ["lighting", "security", "environment"],
