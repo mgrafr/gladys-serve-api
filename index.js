@@ -27,20 +27,23 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
+async function callApi() {
+  try {
+    const response = await fetch('https://localhost:3002/');
 
-gladys.onAction("test_server", callApi() => {
-fetch('http://localhost:3002/')
-  .then(response => {
-    // Vérifier que la requête a réussi
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .catch(error => {
-    console.error('Erreur :', error);
-  });
-});
+    };
+  } catch (error) {
+    console.error('Erreur lors de la récupération:', error);
+    throw error;
+  };
+};
+
+gladys.onAction("test_server", callApi());
+
+
+
 
 
 
