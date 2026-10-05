@@ -28,7 +28,7 @@ let config = normalizeConfig();
 let pushCleanups = [];
 
 
-gladys.onAction("test_server", async function() => {
+gladys.onAction("test_server", async callApi() => {
 fetch('http://localhost:3002/')
   .then(response => {
     // Vérifier que la requête a réussi
