@@ -17,7 +17,7 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-import { getServerApiHealth, SERVER-API_INTERNAL_URL } from './src/serverApi.js';
+import { getServerApiHealth, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
 
 const gladys = new GladysIntegration();
 
@@ -45,7 +45,7 @@ gladys.onAction("test_server", () => callApi());
 
 / The base URL that last answered: the private DNS alias (http://192.168.1.131:3002)
 // or, as a fallback, the admin port published on the host.
-let npmBaseUrl = SERVER-API_INTERNAL_URL;
+let npmBaseUrl = SERVERAPI_INTERNAL_URL;
 // --- Manifest action: "Check server-api" button ---------------------
 gladys.onAction('test_server', async () => {
   logger.info(`Action test_server -> live request to the SERVER API (${npmBaseUrl})`);
