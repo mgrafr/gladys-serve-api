@@ -27,20 +27,24 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
-
-gladys.onAction("test_server", async function appelUrl() {
-  try {
-    const reponse = await fetch('http://localhost:3002/');
-    if (!reponse.ok) {
-      throw new Error(`Erreur HTTP : ${reponse.status}`);  }
-    const donnees = await reponse.json();
-    console.log(donnees);
-  } catch (erreur) {
-    console.error('Erreur lors de l’appel :', erreur);
-  }
-}    
+const url = "http://localhost/";
+gladys.onAction("test_server", async function callUrl() {
+    try {
+        const response = await fetch(url);
+    } catch (error) {
+        console.error("Erreur lors de l'appel");
+    }
+}
 
 
+////////
+// URL à appeler
+const url = "https://jsonplaceholder.typicode.com/posts/1";
+
+
+
+
+                
 
 // --- Configuration updated by the user ---------------------------------------
 gladys.onConfigUpdated(async (newConfig) => {
