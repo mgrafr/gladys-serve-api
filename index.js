@@ -28,13 +28,14 @@ let config = normalizeConfig();
 let pushCleanups = [];
 
 // Exemple de requête GET vers votre serveur local
-gladys.http.request({
+gladys.onAction("test-server", async () => {
+await gladys.http.request({
   method: 'GET',
   url: 'http://localhost:3000/' ,
 })
 .then(response => console.log('Succès:', response))
 .catch(error => console.error('Erreur:', error));
-
+});
 
 
 
