@@ -17,7 +17,7 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-
+import { getServerApiHealth, SERVER-API_INTERNAL_URL } from './src/serverApi.js';
 
 const gladys = new GladysIntegration();
 
@@ -27,7 +27,7 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
-async function callApi() {
+/*async function callApi() {
   try {
     const response = await fetch('http://192.168.1.131:3002/');
 
@@ -41,15 +41,18 @@ async function callApi() {
 };
 
 gladys.onAction("test_server", () => callApi());
+*/
 
-// --- Manifest action: "Check Nginx Proxy Manager" button ---------------------
+/ The base URL that last answered: the private DNS alias (http://192.168.1.131:3002)
+// or, as a fallback, the admin port published on the host.
+let npmBaseUrl = SERVER-API_INTERNAL_URL;
+// --- Manifest action: "Check server-api" button ---------------------
 gladys.onAction('test_server', async () => {
   logger.info(`Action test_server -> live request to the SERVER API (${npmBaseUrl})`);
-  const health = await getNpmHealth(npmBaseUrl);
-  const version = formatVersion(health);
+  const health = await getServerApiHealth(npmBaseUrl);
   return {
-    en: `Nginx Proxy Manager v${version} is up and running.`,
-    fr: `Nginx Proxy Manager v${version} est démarré et fonctionne.`,
+    en: `Nginx Proxy Manager v${hello} is up and running.`,
+    fr: `Nginx Proxy Manager v${hello} est démarré et fonctionne.`,
   };
 });
 
