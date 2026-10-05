@@ -27,17 +27,20 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
-// Exemple de requête GET vers votre serveur local
-gladys.onAction("test_server", async () => {
-const testing-sever =  normalizeConfig(await gladys.http.request({
-  method: 'GET',
-  url: 'http://localhost:3002/' ,
-})
-.then(response => console.log('Succès:', response))
-.catch(error => console.error('Erreur:', error));
-  );
-});
 
+gladys.onAction("test_server", async function() => {
+fetch('http://localhost:3002/')
+  .then(response => {
+    // Vérifier que la requête a réussi
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .catch(error => {
+    console.error('Erreur :', error);
+  });
+});
 
 
 
