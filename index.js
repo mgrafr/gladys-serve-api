@@ -42,14 +42,14 @@ let pushCleanups = [];
 
 gladys.onAction("test_server", () => callApi());
 */
-
+//const CONTAINER_NAME = 'server-api';
 / The base URL that last answered: the private DNS alias (http://192.168.1.131:3002)
 // or, as a fallback, the admin port published on the host.
-let npmBaseUrl = SERVERAPI_INTERNAL_URL;
+let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 // --- Manifest action: "Check server-api" button ---------------------
 gladys.onAction('test_server', async () => {
-  logger.info(`Action test_server -> live request to the SERVER API (${npmBaseUrl})`);
-  const health = await getServerApiHealth(npmBaseUrl);
+  logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
+  const health = await getServerApiHealth(serveBaseUrl);
   return {
     en: `Nginx Proxy Manager v${hello} is up and running.`,
     fr: `Nginx Proxy Manager v${hello} est démarré et fonctionne.`,
