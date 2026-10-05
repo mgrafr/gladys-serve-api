@@ -27,19 +27,13 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
-const url = "http://localhost/";
-gladys.onAction("test_server", async function callUrl() {
-    try {
-        const response = await fetch(url);
-    } catch (error) {
-        console.error("Erreur lors de l'appel");
-    }
-}
-
-
-////////
-// URL à appeler
-const url = "https://jsonplaceholder.typicode.com/posts/1";
+// Exemple de requête GET vers votre serveur local
+gladys.http.request({
+  method: 'GET',
+  url: 'http://localhost:3000/' ,
+})
+.then(response => console.log('Succès:', response))
+.catch(error => console.error('Erreur:', error));
 
 
 
