@@ -29,7 +29,7 @@ let pushCleanups = [];
 
 async function callApi() {
   try {
-    const response = await fetch('https://192.168.1.131:3002/');
+    const response = await fetch('http://192.168.1.131:3002/');
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
