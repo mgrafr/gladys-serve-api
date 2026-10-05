@@ -33,6 +33,20 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
+
+gladys.onAction("test_", async function appelUrl() {
+  try {
+    const reponse = await fetch('http://localhost:3002/');
+    if (!reponse.ok) {
+      throw new Error(`Erreur HTTP : ${reponse.status}`);  }
+    const donnees = await reponse.json();
+    console.log(donnees);
+  } catch (erreur) {
+    console.error('Erreur lors de l’appel :', erreur);
+  }
+}    
+
+
 // --- Discovery: Gladys asks for the list of devices --------------------------
 gladys.onScanRequest(async () => {
   logger.info('onScanRequest -> publishing discovered devices');
