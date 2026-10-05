@@ -21,14 +21,10 @@
 //     by the action `key` declared in gladys-assistant-integration.json
 // -----------------------------------------------------------------------------
 
-import { weatherStation } from './weatherStation.js';
 import { switchDevice } from './switchDevice.js';
-import { light } from './light.js';
-import { plug } from './plug.js';
-import { motionSensor } from './motionSensor.js';
-import { camera } from './camera.js';
 
-export const DEVICE_BLUEPRINTS = [weatherStation, switchDevice, light, plug, motionSensor, camera];
+
+export const DEVICE_BLUEPRINTS = [switchDevice];
 
 /**
  * Build the discovery payload for Gladys (all devices).
