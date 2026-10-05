@@ -42,7 +42,16 @@ async function callApi() {
 
 gladys.onAction("test_server", () => callApi());
 
-
+// --- Manifest action: "Check Nginx Proxy Manager" button ---------------------
+gladys.onAction('test_server', async () => {
+  logger.info(`Action test_server -> live request to the SERVER API (${npmBaseUrl})`);
+  const health = await getNpmHealth(npmBaseUrl);
+  const version = formatVersion(health);
+  return {
+    en: `Nginx Proxy Manager v${version} is up and running.`,
+    fr: `Nginx Proxy Manager v${version} est démarré et fonctionne.`,
+  };
+});
 
 
 
