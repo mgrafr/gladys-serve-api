@@ -29,12 +29,13 @@ let pushCleanups = [];
 
 // Exemple de requête GET vers votre serveur local
 gladys.onAction("test_server", async () => {
-await gladys.http.request({
+const testing-sever =  normalizeConfig(await gladys.http.request({
   method: 'GET',
   url: 'http://localhost:3002/' ,
 })
 .then(response => console.log('Succès:', response))
 .catch(error => console.error('Erreur:', error));
+  );
 });
 
 
