@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "type": "communication",
+  "type": "provider",
   "name": "Serveur API",
   "description": {
     "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
