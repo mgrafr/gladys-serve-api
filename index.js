@@ -28,7 +28,7 @@ let config = normalizeConfig();
 let pushCleanups = [];
 
 //const CONTAINER_NAME = 'server-api';
-/ The base URL that last answered: the private DNS alias (http://192.168.1.131:3002)
+// The base URL that last answered: the private DNS alias (http://192.168.1.131:3004)
 // or, as a fallback, the admin port published on the host.
 let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 // --- Manifest action: "Check server-api" button ---------------------
