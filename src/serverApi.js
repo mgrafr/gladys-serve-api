@@ -29,6 +29,6 @@ export async function getServerApiHealth(baseUrl = SERVERAPI_INTERNAL_URL) {
  * @param {{ status?: { } }} health
  */
 export function formatStatus(health) {
-  const statut = health?.hello;
-  return status ? `${statut}` : 'unknown';
+  const status = health?.hello;
+  return status ? `${status}` : 'unknown';
 }
