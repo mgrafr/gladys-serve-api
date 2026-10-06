@@ -30,7 +30,8 @@
 // -----------------------------------------------------------------------------
 
 import { createLogger } from '@gladysassistant/integration-sdk';
-import {
+//**
+/*import {
   COMMANDS,
   EVENTS,
   EVENT_PRESENT_STATE,
@@ -41,7 +42,7 @@ import {
 import { EVENT_FEATURES } from './mapping/catalog.js';
 import { snapshotValues } from './mapping/appliance.js';
 import { describeAppliance, pick } from './mapping/describe.js';
-
+*/
 const logger = createLogger({ name: 'scenes' });
 
 /** Trigger keys, as declared in `scene_triggers` of the manifest. */
@@ -52,8 +53,9 @@ export const SCENE_TRIGGERS = {
   NOTIFICATION: 'appliance_notification',
 };
 
-/** Action keys, as declared in `scene_actions` of the manifest. */
-export const SCENE_ACTIONS = {
+/*/** Action keys, as declared in `scene_actions` of the manifest. */
+
+/*export const SCENE_ACTIONS = {
   START: 'start_program',
   STOP: 'stop_program',
   PAUSE: 'pause_program',
@@ -69,7 +71,7 @@ const DEDICATED_EVENTS = new Set([EVENTS.PROGRAM_FINISHED, EVENTS.PROGRAM_ABORTE
 // raised, `Off` / `Confirmed` when it is cleared or acknowledged. Only the
 // raising edge is an event worth a scene — the rest is the alert going away.
 const CLEARED_STATES = new Set([EVENT_PRESENT_STATE.OFF, EVENT_PRESENT_STATE.CONFIRMED]);
-
+*/
 export class SceneBridge {
   /**
    * @param {object} options
@@ -80,9 +82,9 @@ export class SceneBridge {
    */
   constructor({ gladys, api, registry, getConfig }) {
     this.gladys = gladys;
-    this.api = api;
+    /*this.api = api;
     this.registry = registry;
-    this.getConfig = getConfig;
+    this.getConfig = getConfig;*/
   }
 
   /** Register the five scene actions. Call it BEFORE `connect()`. */
@@ -111,7 +113,7 @@ export class SceneBridge {
    * @param {import('./homeconnect/events.js').HomeConnectEvent} event
    * @param {object} snapshot appliance snapshot, still un-updated
    */
-  async handleApplianceEvent(event, snapshot) {
+ /* async handleApplianceEvent(event, snapshot) {
     try {
       const payload = this.buildTrigger(event, snapshot);
       if (!payload) {
@@ -128,7 +130,7 @@ export class SceneBridge {
    * Which trigger — if any — this event fires.
    * @returns {{key: string, data: object}|null}
    */
-  buildTrigger(event, snapshot) {
+ /* buildTrigger(event, snapshot) {
     if (!event?.key) {
       return null;
     }
@@ -193,7 +195,7 @@ export class SceneBridge {
       program_key: programKey,
     };
   }
-
+*/
   // --- Actions ---------------------------------------------------------------
 
   /**
