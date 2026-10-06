@@ -17,7 +17,7 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-import { getServerApiHealth, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
+import { getServerApiHealth, formatStatus, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
 
 const gladys = new GladysIntegration();
 
@@ -35,14 +35,12 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 gladys.onAction('test_server', async () => {
   logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);
+  const status = formatStatus(health);
   return {
-    en: `Server Api v${hello} is up and running.`,
-    fr: `Server Api v${hello} est démarré et fonctionne.`,
+    en: `Server Api v${status} is up and running.`,
+    fr: `Server Api v${status} est démarré et fonctionne.`,
   };
 });
-
-
-
 
 // --- Graceful shutdown -------------------------------------------------------
 // The SDK stops the push subscriptions, disconnects cleanly and exits with
