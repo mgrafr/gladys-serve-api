@@ -23,3 +23,12 @@ export async function getServerApiHealth(baseUrl = SERVERAPI_INTERNAL_URL) {
 .then(data => console.log(data))
 .catch(error => console.error('Erreur Fetch:', error));
 }
+
+/**
+ * style version string from a health payload, or 'unknown'.
+ * @param {{ status?: { } }} health
+ */
+export function formatVersion(health) {
+  const hello = health?.hello;
+  return status ? `${hello}` : 'unknown';
+}
