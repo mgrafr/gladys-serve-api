@@ -28,6 +28,11 @@
       "key": "test_server",
       "label": { "en": "Test the api server", "fr": "Tester le serveur api" },
       "timeout_seconds": 30
+    },
+    {
+      "key": "Backup_db",
+      "label": { "en": "Databases backup completed", "fr": "Sauvergarde bases données" },
+      "timeout_seconds": 60
     }
       ],
   "widgets": [
