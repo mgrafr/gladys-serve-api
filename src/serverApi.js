@@ -28,7 +28,7 @@ export async function getServerApiHealth(baseUrl = SERVERAPI_INTERNAL_URL) {
  * style version string from a health payload, or 'unknown'.
  * @param {{ status?: { } }} health
  */
-export function formatVersion(health) {
-  const hello = health?.hello;
-  return status ? `${hello}` : 'unknown';
+export function formatStatus(health) {
+  const statut = health?.hello;
+  return status ? `${statut}` : 'unknown';
 }
