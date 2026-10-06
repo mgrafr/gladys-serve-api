@@ -18,7 +18,7 @@
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
 import { getServerApiHealth, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
-import { SceneBridge } from './src/scenes.js';
+// import { SceneBridge } from './src/scenes.js';
 const gladys = new GladysIntegration();
 
 // Current configuration (hot-reloaded via onConfigUpdated).
@@ -35,15 +35,23 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 gladys.onAction('test_server', async () => {
   logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);
-  const status = health?.hello;
+  const status = health?.statusCode;
   return {
     en: `Server Api ${status} is up and running.`,
     fr: `Server Api ${status} est démarré et fonctionne.`,
   };
 });
+// --- Manifest action: "backup bd splite" button ---------------------
+gladys.onAction('backup_db', async () => {
+  logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl}backup)`);
+  const health = await getServerApiHealth(serveBaseUrl+=backup);                             
+  return {
+    en: `Server Api ${status} is up and running.`,
+    fr: `Database backup completed.`,
+  };
+});
 
-
-const scenes = new SceneBridge({ gladys : () => config });
+// const scenes = new SceneBridge({ gladys : () => config });
 
 // --- Graceful shutdown -------------------------------------------------------
 // The SDK stops the push subscriptions, disconnects cleanly and exits with
