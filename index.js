@@ -42,12 +42,12 @@ gladys.onAction('test_server', async () => {
   };
 });
 // --- Manifest action: "backup bd splite" button ---------------------
-gladys.onAction('backup_db', async () => {
+gladys.onAction('Backup_db', async () => {
   logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl}backup)`);
   const health = await getServerApiHealth(serveBaseUrl+=backup);                             
   return {
-    en: `Server Api ${status} is up and running.`,
-    fr: `Database backup completed.`,
+    en: `Database backup completed.`,
+    fr: `Sauvegarde des bases de données effectuée.`,
   };
 });
 
