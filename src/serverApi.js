@@ -18,7 +18,7 @@ export async function getServerApiHealth(baseUrl = SERVERAPI_INTERNAL_URL) {
   const response = await fetch(`${baseUrl}/`, {
    method: 'GET',
   headers: {'Content-Type': 'application/json'}
-   });
+   })
 .then(response => response.json())
 .then(data => console.log(data))
 .catch(error => console.error('Erreur Fetch:', error));
