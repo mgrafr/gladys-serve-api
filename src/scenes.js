@@ -195,7 +195,7 @@ export class SceneBridge {
       program_key: programKey,
     };
   }
-*/
+
   // --- Actions ---------------------------------------------------------------
 
   /**
