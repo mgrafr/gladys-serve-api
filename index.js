@@ -35,10 +35,10 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 gladys.onAction('test_server', async () => {
   logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);
-  const status = formatStatus(health);
+  const status = health?.hello;
   return {
-    en: `Server Api v${status} is up and running.`,
-    fr: `Server Api v${status} est démarré et fonctionne.`,
+    en: `Server Api ${status} is up and running.`,
+    fr: `Server Api ${status} est démarré et fonctionne.`,
   };
 });
 
