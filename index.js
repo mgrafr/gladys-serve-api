@@ -18,7 +18,7 @@
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
 import { getServerApiHealth, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
-
+import { SceneBridge } from './src/scenes.js';
 const gladys = new GladysIntegration();
 
 // Current configuration (hot-reloaded via onConfigUpdated).
@@ -41,6 +41,9 @@ gladys.onAction('test_server', async () => {
     fr: `Server Api ${status} est démarré et fonctionne.`,
   };
 });
+
+
+const scenes = new SceneBridge({ gladys => config });
 
 // --- Graceful shutdown -------------------------------------------------------
 // The SDK stops the push subscriptions, disconnects cleanly and exits with
