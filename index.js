@@ -17,7 +17,7 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-import { getServerApiHealth, formatStatus, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
+import { getServerApiHealth, SERVERAPI_INTERNAL_URL } from './src/serverApi.js';
 
 const gladys = new GladysIntegration();
 
