@@ -43,7 +43,7 @@ gladys.onAction('test_server', async () => {
 });
 
 
-const scenes = new SceneBridge({ gladys => config });
+const scenes = new SceneBridge({ gladys : () => config });
 
 // --- Graceful shutdown -------------------------------------------------------
 // The SDK stops the push subscriptions, disconnects cleanly and exits with
