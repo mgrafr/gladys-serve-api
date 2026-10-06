@@ -30,7 +30,7 @@
       "timeout_seconds": 30
     },
     {
-      "key": "Backup_db",
+      "key": "backup_db",
       "label": { "en": "Databases backup completed", "fr": "Sauvergarde bases données" },
       "timeout_seconds": 60
     }
