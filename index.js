@@ -27,21 +27,6 @@ let config = normalizeConfig();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
 
-/*async function callApi() {
-  try {
-    const response = await fetch('http://192.168.1.131:3002/');
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    };
-  } catch (error) {
-    console.error('Erreur lors de la récupération:', error);
-    throw error;
-  };
-};
-
-gladys.onAction("test_server", () => callApi());
-*/
 //const CONTAINER_NAME = 'server-api';
 / The base URL that last answered: the private DNS alias (http://192.168.1.131:3002)
 // or, as a fallback, the admin port published on the host.
@@ -51,8 +36,8 @@ gladys.onAction('test_server', async () => {
   logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);
   return {
-    en: `Nginx Proxy Manager v${hello} is up and running.`,
-    fr: `Nginx Proxy Manager v${hello} est démarré et fonctionne.`,
+    en: `Server Api v${hello} is up and running.`,
+    fr: `Server Api v${hello} est démarré et fonctionne.`,
   };
 });
 
