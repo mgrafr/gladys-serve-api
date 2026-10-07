@@ -4,7 +4,7 @@
 import { createLogger } from '@gladysassistant/integration-sdk';
 import {  
   SERVERAPI_DEFAULT_PORT,
-  } from './constants.js';
+  } from '../constants.js';
 
 const logger = createLogger({ name: 'server-api' });
 
