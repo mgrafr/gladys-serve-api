@@ -36,7 +36,12 @@
     },
      {
       "key": "add_script",
-      "label": { "en": "Add a script", "fr": "Ajputer un script" },
+      "label": { "en": "Add a script", "fr": "Ajouter un script" },
+      "timeout_seconds": 60
+    },
+    {
+      "key": "stop_server",
+      "label": { "en": "STOP server api", "fr": "STOP server api" },
       "timeout_seconds": 60
     }
       ],
