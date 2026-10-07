@@ -11,8 +11,8 @@
 // SERVER API LOCAL(the webserver's own API, port 3004 by default).
 //
 // Read:  GET http://<ip>:<port>/ -> { statut: "OK"} 
-// Write: GET  http://<ip>:<port>/backup -> download datas.tar.gz (databases)
-// Probe: GET http://<ip>:<port>/script/:${interpreteur}/:${name_script}
+// Read: GET  http://<ip>:<port>/backup -> download datas.tar.gz (databases)
+// Read: GET http://<ip>:<port>/script/:${interpreteur}/:${name_script}
 // 
 // -----------------------------------------------------------------------------
 export const SERVERAPI_DEFAULT_PORT = 3004;
