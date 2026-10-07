@@ -28,11 +28,12 @@ let config = normalizeConfig();
 let pushCleanups = [];
 
 //const CONTAINER_NAME = 'server-api';
-// The base URL that last answered: the private DNS alias (http://192.168.1.131:3004)
-// or, as a fallback, the admin port published on the host.
-let serveBaseUrl = SERVERAPI_INTERNAL_URL;
+
 // --- Manifest action: "Check server-api" button ---------------------
 gladys.onAction('test_server', async () => {
+// The base URL that last answered: the private DNS alias (http://192.168.1.131:3004)
+// or, as a fallback, the admin port published on the host.
+let serveBaseUrl = SERVERAPI_INTERNAL_URL;  
   logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);
   const status = health?.statusCode;
@@ -43,8 +44,9 @@ gladys.onAction('test_server', async () => {
 });
 // --- Manifest action: "backup bd splite" button ---------------------
 gladys.onAction('backup_db', async () => {
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL;  
   logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl}/backup)`);
-  const health = await getServerApiHealth(serveBaseUrl+="/backup");                             
+  const health = await getServerApiHealth(serveBaseUrl+="backup");                             
   return {
     en: `Database backup completed.`,
     fr: `Sauvegarde des bases de données effectuée.`,
@@ -52,8 +54,9 @@ gladys.onAction('backup_db', async () => {
 });
 // --- Manifest action: add script" button ---------------------
 gladys.onAction('add_script', async () => {
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL;  
   logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl}/)`);
-  const health = await getServerApiHealth(serveBaseUrl+="");                             
+  const health = await getServerApiHealth(serveBaseUrl+="script");                             
   return {
     en: `Add script completed.`,
     fr: `Ajout du script effectué.`,
