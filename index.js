@@ -50,6 +50,15 @@ gladys.onAction('backup_db', async () => {
     fr: `Sauvegarde des bases de données effectuée.`,
   };
 });
+// --- Manifest action: add script" button ---------------------
+gladys.onAction('add_script', async () => {
+  logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl}/)`);
+  const health = await getServerApiHealth(serveBaseUrl+="");                             
+  return {
+    en: `Add script completed.`,
+    fr: `Ajout du script effectué.`,
+  };
+});
 
 // const scenes = new SceneBridge({ gladys : () => config });
 
