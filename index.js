@@ -45,7 +45,7 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 // --- Manifest action: "backup bd splite" button ---------------------
 gladys.onAction('backup_db', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+="backup";  
-  logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl});
+  logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl})');
   const health = await getServerApiHealth(serveBaseUrl);                             
   return {
     en: `Database backup completed.`,
