@@ -6,7 +6,7 @@ import { createLogger } from '@gladysassistant/integration-sdk';
 const logger = createLogger({ name: 'server-api' });
 
 // Overridable for local runs/tests outside the Gladys network.
-export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131:3004';
+export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131:3004/';
 
 const REQUEST_TIMEOUT_MS = 5_000;
 
