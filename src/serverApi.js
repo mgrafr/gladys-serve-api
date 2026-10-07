@@ -2,12 +2,10 @@
 // -----------------------------------------------------------------------------
 
 import { createLogger } from '@gladysassistant/integration-sdk';
-import {  
-  SERVERAPI_DEFAULT_PORT,
-  } from '../src/constants.js';
+import { config } from '../src/constants.js';
 
 const logger = createLogger({ name: 'server-api' });
-
+config.name = "Rishabh"; 
 // Overridable for local runs/tests outside the Gladys network.
 export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131:3004/';
 
