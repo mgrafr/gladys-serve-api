@@ -12,7 +12,7 @@
   "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
   "categories": ["environment"],
   "transports": ["local"],
-  "config_schema": [
+"config_schema": [
     {
       "key": "intro",
       "type": "section",
@@ -28,8 +28,7 @@
       "label": {
         "en": "Local API port",
         "fr": "Port de l'API locale"
-      }
-    },
+      },
       "description": {
         "en": "Optional, 3004 by default (the SERVER- API port).",
         "fr": "Optionnel, 3004 par défaut (le port de SERVER-API)."
@@ -38,6 +37,7 @@
         "en": "3004",
         "fr": "3004"
       }
+    }
   ],
   "actions": [
     {
