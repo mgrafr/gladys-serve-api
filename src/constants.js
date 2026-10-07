@@ -15,4 +15,4 @@
 // Read: GET http://<ip>:<port>/script/:${interpreteur}/:${name_script}
 // 
 // -----------------------------------------------------------------------------
-export const SERVERAPI_DEFAULT_PORT = 3004;
+export let SERVERAPI_DEFAULT_PORT = 3004;
