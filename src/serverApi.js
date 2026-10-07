@@ -1,7 +1,10 @@
-// Node 20+ provides `fetch` natively: no dependency needed.
+// Node 24+ provides `fetch` natively: no dependency needed.
 // -----------------------------------------------------------------------------
 
 import { createLogger } from '@gladysassistant/integration-sdk';
+import {  
+  SERVERAPI_DEFAULT_PORT,
+  } from '../constants.js';
 
 const logger = createLogger({ name: 'server-api' });
 
