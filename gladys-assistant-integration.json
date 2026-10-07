@@ -21,6 +21,14 @@
         "en": "The demo  API: , no API key.",
         "fr": "démonstrationAPI."
       }
+    },
+    {
+      "key": "local_port",
+      "type": "number",
+      "label": {
+        "en": "Local API port",
+        "fr": "Port de l'API locale"
+      }
     }
   ],
   "actions": [
