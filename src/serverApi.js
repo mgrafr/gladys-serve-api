@@ -9,7 +9,7 @@ import {
 const logger = createLogger({ name: 'server-api' });
 
 // Overridable for local runs/tests outside the Gladys network.
-export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131:'+=SERVERAPI_DEFAULT_PORT+='/';
+export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131:3004/';
 
 const REQUEST_TIMEOUT_MS = 5_000;
 
