@@ -44,25 +44,34 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL;
 });
 // --- Manifest action: "backup bd splite" button ---------------------
 gladys.onAction('backup_db', async () => {
-  let serveBaseUrl = SERVERAPI_INTERNAL_URL;  
-  logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl}/backup)`);
-  const health = await getServerApiHealth(serveBaseUrl+="backup");                             
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL+="backup";  
+  logger.info(`Action backup bade données -> live request to the SERVER API (${serveBaseUrl});
+  const health = await getServerApiHealth(serveBaseUrl);                             
   return {
     en: `Database backup completed.`,
     fr: `Sauvegarde des bases de données effectuée.`,
   };
 });
-// --- Manifest action: add script" button ---------------------
+// --- Manifest action: "add script" button ---------------------
 gladys.onAction('add_script', async () => {
-  let serveBaseUrl = SERVERAPI_INTERNAL_URL;  
-  logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl}/)`);
-  const health = await getServerApiHealth(serveBaseUrl+="script");                             
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL+="script";  
+  logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl})`);
+  const health = await getServerApiHealth(serveBaseUrl);                             
   return {
     en: `Add script completed.`,
     fr: `Ajout du script effectué.`,
   };
 });
-
+// --- Manifest action: "STOP server api" button ---------------------
+gladys.onAction('add_script', async () => {
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL+="stop";  
+  logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl})`);
+  const health = await getServerApiHealth(serveBaseUrl);                             
+  return {
+    en: `Stop server completed.`,
+    fr: `Arrêt du serveur effectué.`,
+  };
+});
 // const scenes = new SceneBridge({ gladys : () => config });
 
 // --- Graceful shutdown -------------------------------------------------------
