@@ -14,7 +14,7 @@ const REQUEST_TIMEOUT_MS = 5_000;
  * @param {string} [baseUrl]
  */
 export async function getServerApiHealth(baseUrl) {
-  const response = await fetch(baseUrl}`, {
+  const response = await fetch(baseUrl), {
    method: 'GET',
   headers: {'Content-Type': 'application/json'}
    })
