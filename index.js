@@ -17,7 +17,7 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-import { downloadGzip, SERVERAPI_INTERNAL_URL, SERVERAPI_PORT } from './src/serverApi.js';
+import { getServerApi, downloadGzip, SERVERAPI_INTERNAL_URL, SERVERAPI_PORT } from './src/serverApi.js';
 // import { SceneBridge } from './src/scenes.js';
 const gladys = new GladysIntegration();
 
@@ -42,7 +42,19 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port;
     fr: `Server Api ${status} est démarré et fonctionne.`,
   };
 });
-// --- Manifest action: "backup bd splite" button ---------------------
+
+// --- Manifest action: "backup bd splite" button ------------------
+gladys.onAction('backup_db', async () => {
+ let url = SERVERAPI_INTERNAL_URL+":"+port+"/backup";  
+  logger.info(`Action backup databases -> live request to the SERVER API (${url})`);
+    const filePath = await downloadGzip(url);
+    gladys.event.emit('gzip.downloaded', { filePath });
+    return {
+    en: `Database backup completed.`,
+    fr: `Sauvegarde des bases de données effectuée.`,
+  };
+});
+/*
 gladys.onAction('backup_db', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/backup";  
   logger.info(`Action backup databases -> live request to the SERVER API (${serveBaseUrl})`);
@@ -52,6 +64,7 @@ gladys.onAction('backup_db', async () => {
     fr: `Sauvegarde des bases de données effectuée.`,
   };
 });
+*/
 // --- Manifest action: "add script" button ---------------------
 gladys.onAction('add_script', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/script";  
