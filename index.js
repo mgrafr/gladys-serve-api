@@ -17,7 +17,7 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-import { getServerApi, SERVERAPI_INTERNAL_URL, SERVERAPI_PORT } from './src/serverApi.js';
+import { downloadGzip, SERVERAPI_INTERNAL_URL, SERVERAPI_PORT } from './src/serverApi.js';
 // import { SceneBridge } from './src/scenes.js';
 const gladys = new GladysIntegration();
 
