@@ -20,7 +20,7 @@ my-gladys-pdf-integration/
         └── downloadPdf.js
  * @param {string} [baseUrl]
  */
-/* export async function getServerApi(baseUrl) {
+export async function getServerApi(baseUrl) {
     // Validation des entrées
     if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
@@ -30,28 +30,20 @@ my-gladys-pdf-integration/
         const response = await fetch(baseUrl, {
             method: "GET",
             headers: {
-                "Accept": "application/gzip"
+                "Accept": "application/gson"
             },
             signal: AbortSignal.timeout(5000) // Timeout de 5 secondes
         });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        // CORRECT : On récupère le corps de la réponse sous forme de flux (Stream)
-        // ou de ArrayBuffer. response.body contient les octets Gzip bruts.
-        // return response.body;
-
-        const buffer = await res.arrayBuffer();
-        fs.writeFileSync('/tmp/document.pdf', Buffer.from(buffer));
-        console.log('PDF téléchargé avec succès');
-}
-
+        
     } catch (error) {
         logger.error('Erreur Fetch:', error);
         throw error; // On propage l'erreur pour la gérer plus haut
     }
 }
-*/
+
 export async function downloadGzip(url) {
   const res = await fetch(url);
 
