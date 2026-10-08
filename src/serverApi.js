@@ -20,7 +20,7 @@ export async function getServerApi(baseUrl) {
     } 
  logger.info(`function getServerApi -> live request to the SERVER API (${baseUrl})`);
     const response = await fetch(baseUrl, {
-            method: 'GET',
+            method: "GET",
             headers: {
                 "Accept": "application/gzip"
             },
