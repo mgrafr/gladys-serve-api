@@ -8,7 +8,7 @@ const logger = createLogger({ name: 'server-api' });
 export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131';
 export let SERVERAPI_PORT = 3004;
 const REQUEST_TIMEOUT_MS = 5_000;
-IMPORT path from 'path';
+import path from 'path';
 /**
 /*
 my-gladys-pdf-integration/
