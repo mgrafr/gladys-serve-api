@@ -69,16 +69,17 @@ gladys.onAction('backup_db', async () => {
 gladys.onAction('add_script', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/script";  
   logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl})`);
-  const health = await getServerApi(serveBaseUrl);                             
+  const health = await getServerApi(serveBaseUrl); 
+  logger.info(`Action add script response-> live request to the SERVER API (${health})`);
   return {
     en: `Add script completed.`,
     fr: `Ajout du script effectué.`
   };
 });
 // --- Manifest action: "STOP server api" button ---------------------
-gladys.onAction('add_script', async () => {
+gladys.onAction('stop_server', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/stop";  
-  logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl})`);
+  logger.info(`Action STOP server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApi(serveBaseUrl);                             
   return {
     en: `Stop server completed.`,
