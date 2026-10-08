@@ -18,13 +18,17 @@ export async function getServerApi(baseUrl) {
     if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
     } 
-  const response = await fetch(baseUrl), {
-   method: 'GET',
-  headers: {'Content-Type': 'application/json'}
-   })
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Erreur Fetch:', error));
-}
+    const response = await fetch(baseUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            },
+            // Timeout handling for server-side fetch
+            signal: AbortSignal.timeout(5000) // 5 seconds
+        })
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch(error => console.error('Erreur Fetch:', error));
+ }
 
 
