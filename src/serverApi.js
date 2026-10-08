@@ -14,6 +14,10 @@ const REQUEST_TIMEOUT_MS = 5_000;
  * @param {string} [baseUrl]
  */
 export async function getServerApiHealth(baseUrl) {
+ // Validate input
+    if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
+        throw new Error("Invalid baseUrl: must be a non-empty string.");
+    } 
   const response = await fetch(baseUrl), {
    method: 'GET',
   headers: {'Content-Type': 'application/json'}
