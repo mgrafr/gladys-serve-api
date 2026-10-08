@@ -13,7 +13,7 @@ const REQUEST_TIMEOUT_MS = 5_000;
  * API health/version info of the SERVER-API instance.
  * @param {string} [baseUrl]
  */
-export async function getServerApiHealth(baseUrl) {
+export async function getServerApi(baseUrl) {
  // Validate input
     if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
