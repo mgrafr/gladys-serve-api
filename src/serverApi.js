@@ -14,22 +14,29 @@ const REQUEST_TIMEOUT_MS = 5_000;
  * @param {string} [baseUrl]
  */
 export async function getServerApi(baseUrl) {
- // Validate input
+    // Validation des entrées
     if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
     } 
- logger.info(`function getServerApi -> live request to the SERVER API (${baseUrl})`);
-    const response = await fetch(baseUrl, {
+    logger.info(`function getServerApi -> live request to the SERVER API (${baseUrl})`);
+    try {
+        const response = await fetch(baseUrl, {
             method: "GET",
             headers: {
                 "Accept": "application/gzip"
             },
-            // Timeout handling for server-side fetch
-            signal: AbortSignal.timeout(5000) // 5 seconds
-        })
-          .then(response => response.json())
-          .then(data => console.log(data))
-          .catch(error => console.error('Erreur Fetch:', error));
- }
+            signal: AbortSignal.timeout(5000) // Timeout de 5 secondes
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        // CORRECT : On récupère le corps de la réponse sous forme de flux (Stream)
+        // ou de ArrayBuffer. response.body contient les octets Gzip bruts.
+        return response.body;
+    } catch (error) {
+        logger.error('Erreur Fetch:', error);
+        throw error; // On propage l'erreur pour la gérer plus haut
+    }
+}
 
 
