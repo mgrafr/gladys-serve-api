@@ -50,12 +50,7 @@ export async function downloadGzip(url) {
   if (!res.ok) {
     throw new Error(`Erreur HTTP ${res.status}`);
   }
-
-  const buffer = await res.arrayBuffer();
-  const filePath = path.join('/tmp', 'datas.tar.gz');
-  fs.writeFileSync(filePath, Buffer.from(buffer));
-
-  return filePath;
+  return res;
 }
 
 
