@@ -9,6 +9,7 @@ export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131';
 export let SERVERAPI_PORT = 3004;
 const REQUEST_TIMEOUT_MS = 5_000;
 import path from 'path';
+import fs from 'fs';
 /**
 /*
 my-gladys-pdf-integration/
