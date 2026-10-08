@@ -21,7 +21,7 @@ export async function getServerApi(baseUrl) {
     const response = await fetch(baseUrl, {
             method: 'GET',
             headers: {
-                'Accept': 'application/json'
+                'Accept': 'application/gzip'
             },
             // Timeout handling for server-side fetch
             signal: AbortSignal.timeout(5000) // 5 seconds
