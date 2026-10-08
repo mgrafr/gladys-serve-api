@@ -72,7 +72,7 @@ gladys.onAction('add_script', async () => {
   const health = await getServerApi(serveBaseUrl);                             
   return {
     en: `Add script completed.`,
-    fr: `Ajout du script effectué.`,
+    fr: `Ajout du script effectué.`
   };
 });
 // --- Manifest action: "STOP server api" button ---------------------
