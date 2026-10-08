@@ -8,7 +8,7 @@ const logger = createLogger({ name: 'server-api' });
 export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131';
 export let SERVERAPI_PORT = 3004;
 const REQUEST_TIMEOUT_MS = 5_000;
-
+const path = require('path');
 /**
 /*
 my-gladys-pdf-integration/
@@ -39,6 +39,7 @@ return response;
 
 export async function downloadGzip(url) {
   const res = await fetch(url);
+  logger.info(`download GZIP -> live request to the SERVER API (${res.status})`);
 
   if (!res.ok) {
     throw new Error(`Erreur HTTP ${res.status}`);
