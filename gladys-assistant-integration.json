@@ -1,18 +1,18 @@
 {
   "manifest_version": 1,
-  "type": "device",
+  "type": "provider",
   "name": "Serveur API",
   "description": {
     "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
     "fr": "Nodejs API server for running external scripts."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/mgrafr/gladys-serve-api:1.0.0",
+  "docker_image": "ghcr.io/mgrafr/gladys-serve-api:1.0.1",
   "gladys_version": ">=4.86.0",
   "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
   "categories": ["environment"],
   "transports": ["local"],
-  "config_schema": [
+"config_schema": [
     {
       "key": "intro",
       "type": "section",
@@ -21,6 +21,22 @@
         "en": "The demo  API: , no API key.",
         "fr": "démonstrationAPI."
       }
+    },
+    {
+      "key": "local_port",
+      "type": "number",
+      "label": {
+        "en": "Local API port",
+        "fr": "Port de l'API locale"
+      },
+      "description": {
+        "en": "Optional, 3004 by default (the SERVER- API port).",
+        "fr": "Optionnel, 3004 par défaut (le port de SERVER-API)."
+      },
+      "placeholder": {
+        "en": "3004",
+        "fr": "3004"
+      }
     }
   ],
   "actions": [
@@ -28,7 +44,89 @@
       "key": "test_server",
       "label": { "en": "Test the api server", "fr": "Tester le serveur api" },
       "timeout_seconds": 30
+    },
+    {
+      "key": "backup_db",
+      "label": { "en": "Databases backup completed", "fr": "Sauvergarde bases données" },
+      "timeout_seconds": 60
+    },
+     {
+      "key": "add_script",
+      "label": { "en": "Add a script", "fr": "Ajouter un script" },
+      "timeout_seconds": 60
+    },
+    {
+      "key": "stop_server",
+      "label": { "en": "STOP server api", "fr": "STOP server api" },
+      "timeout_seconds": 60
     }
+      ],
+  "widgets": [
+    {
+      "key": "appliances",
+      "label": {
+        "en": "Home Connect",
+        "fr": "Home Connect"
+      },
+      "description": {
+        "en": "All your appliances and what they are doing, in one card.",
+        "fr": "Tous vos appareils et ce qu’ils font, en une carte."
+      },
+      "icon": "grid",
+      "settings": [
+        {
+          "key": "appliances",
+          "type": "multi_select",
+          "label": {
+            "en": "Appliances",
+            "fr": "Appareils"
+          },
+          "description": {
+            "en": "Leave empty to show every Home Connect appliance.",
+            "fr": "Laissez vide pour afficher tous les appareils Home Connect."
+          },
+          "source": "devices"
+        }
       ]
+    },
+    {
+      "key": "appliance",
+      "label": {
+        "en": "Appliance",
+        "fr": "Appareil"
+      },
+      "description": {
+        "en": "One appliance: state, program, remaining time and controls.",
+        "fr": "Un appareil : état, programme, temps restant et commandes."
+      },
+      "icon": "box",
+      "settings": [
+        {
+          "key": "appliance",
+          "type": "select",
+          "label": {
+            "en": "Appliance",
+            "fr": "Appareil"
+          },
+          "required": true,
+          "source": "devices"
+        },
+        {
+          "key": "controls",
+          "type": "boolean",
+          "label": {
+            "en": "Show the start / stop buttons",
+            "fr": "Afficher les boutons démarrer / arrêter"
+          },
+          "description": {
+            "en": "Starting runs the program selected on the appliance; it needs remote start armed there.",
+            "fr": "Le démarrage lance le programme sélectionné sur l’appareil ; le démarrage à distance doit y être activé."
+          },
+          "default": true
+        }
+      ],
+      "action_timeout_seconds": 30
+    }
+  ]
     }
 
