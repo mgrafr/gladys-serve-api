@@ -26,23 +26,15 @@ export async function getServerApi(baseUrl) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
     } 
     logger.info(`function getServerApi -> live request to the SERVER API (${baseUrl})`);
-    try {
-        const response = await fetch(baseUrl, {
-            method: "GET",
-            headers: {
-                "Accept": "application/gson"
-            },
-            signal: AbortSignal.timeout(5000) // Timeout de 5 secondes
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-    } catch (error) {
-        logger.error('Erreur Fetch:', error);
-        throw error; // On propage l'erreur pour la gérer plus haut
-    }
+      const response = await fetch(`${baseUrl}/`, {
+   method: 'GET',
+  headers: {'Content-Type': 'application/json'}
+   })
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Erreur Fetch:', error));
 }
+
 
 export async function downloadGzip(url) {
   const res = await fetch(url);
@@ -50,7 +42,14 @@ export async function downloadGzip(url) {
   if (!res.ok) {
     throw new Error(`Erreur HTTP ${res.status}`);
   }
-  return res;
+  const buffer = await res.arrayBuffer();
+  const filePath = path.join('/tmp', 'document.pdf');
+  fs.writeFileSync(filePath, Buffer.from(buffer));
+
+  return filePath;
 }
+  
+
+
 
 
