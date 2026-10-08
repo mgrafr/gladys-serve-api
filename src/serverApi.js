@@ -2,20 +2,18 @@
 // -----------------------------------------------------------------------------
 
 import { createLogger } from '@gladysassistant/integration-sdk';
-// import { config } from '../src/constants.js';
 
 const logger = createLogger({ name: 'server-api' });
-// config.name = "xxxx"; 
 // Overridable for local runs/tests outside the Gladys network.
-export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131:3004/';
-
+export const SERVERAPI_INTERNAL_URL =  'http://192.168.1.131';
+export let SERVERAPI_PORT = 3004;
 const REQUEST_TIMEOUT_MS = 5_000;
 
 /**
  * API health/version info of the SERVER-API instance.
  * @param {string} [baseUrl]
  */
-export async function getServerApiHealth(baseUrl = SERVERAPI_INTERNAL_URL) {
+export async function getServerApiHealth(baseUrl) {
   const response = await fetch(`${baseUrl}`, {
    method: 'GET',
   headers: {'Content-Type': 'application/json'}
