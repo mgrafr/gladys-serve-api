@@ -18,10 +18,11 @@ export async function getServerApi(baseUrl) {
     if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
     } 
+ logger.info(`function getServerApi -> live request to the SERVER API (${baseUrl})`);
     const response = await fetch(baseUrl, {
             method: 'GET',
             headers: {
-                'Accept': 'application/gzip'
+                "Accept": "application/gzip"
             },
             // Timeout handling for server-side fetch
             signal: AbortSignal.timeout(5000) // 5 seconds
