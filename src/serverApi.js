@@ -10,10 +10,17 @@ export let SERVERAPI_PORT = 3004;
 const REQUEST_TIMEOUT_MS = 5_000;
 
 /**
- * API health/version info of the SERVER-API instance.
+/*
+my-gladys-pdf-integration/
+├── index.js
+├── package.json
+└── src/
+    └── gzip/
+        ├── serveApi.js
+        └── downloadPdf.js
  * @param {string} [baseUrl]
  */
-export async function getServerApi(baseUrl) {
+/* export async function getServerApi(baseUrl) {
     // Validation des entrées
     if (typeof baseUrl !== 'string' || !baseUrl.trim()) {
         throw new Error("Invalid baseUrl: must be a non-empty string.");
@@ -32,11 +39,31 @@ export async function getServerApi(baseUrl) {
         }
         // CORRECT : On récupère le corps de la réponse sous forme de flux (Stream)
         // ou de ArrayBuffer. response.body contient les octets Gzip bruts.
-        return response.body;
+        // return response.body;
+
+        const buffer = await res.arrayBuffer();
+        fs.writeFileSync('/tmp/document.pdf', Buffer.from(buffer));
+        console.log('PDF téléchargé avec succès');
+}
+
     } catch (error) {
         logger.error('Erreur Fetch:', error);
         throw error; // On propage l'erreur pour la gérer plus haut
     }
+}
+*/
+export async function downloadGzip(url) {
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Erreur HTTP ${res.status}`);
+  }
+
+  const buffer = await res.arrayBuffer();
+  const filePath = path.join('/tmp', 'datas.tar.gz');
+  fs.writeFileSync(filePath, Buffer.from(buffer));
+
+  return filePath;
 }
 
 
