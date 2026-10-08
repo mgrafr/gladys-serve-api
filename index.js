@@ -33,7 +33,7 @@ let pushCleanups = [];
 gladys.onAction('test_server', async () => {
 // The base URL that last answered: the private DNS alias (http://192.168.1.131:3004)
 // or, as a fallback, the admin port published on the host.
-let serveBaseUrl = SERVERAPI_INTERNAL_URL+=":"+=SERVERAPI_PORT;  
+let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+SERVERAPI_PORT;  
   logger.info(`Action test_server -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);
   const status = health?.statusCode;
@@ -44,7 +44,7 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL+=":"+=SERVERAPI_PORT;
 });
 // --- Manifest action: "backup bd splite" button ---------------------
 gladys.onAction('backup_db', async () => {
-  let serveBaseUrl = SERVERAPI_INTERNAL_URL+=":"+=SERVERAPI_PORT+="/backup";  
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+SERVERAPI_PORT+"/backup";  
   logger.info(`Action backup databases -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);                             
   return {
@@ -54,7 +54,7 @@ gladys.onAction('backup_db', async () => {
 });
 // --- Manifest action: "add script" button ---------------------
 gladys.onAction('add_script', async () => {
-  let serveBaseUrl = SERVERAPI_INTERNAL_URL+=":"+=SERVERAPI_PORT+="+="/script";  
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+SERVERAPI_PORT+"/script";  
   logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);                             
   return {
@@ -64,7 +64,7 @@ gladys.onAction('add_script', async () => {
 });
 // --- Manifest action: "STOP server api" button ---------------------
 gladys.onAction('add_script', async () => {
-  let serveBaseUrl = SERVERAPI_INTERNAL_URL+=":"+=SERVERAPI_PORT+="+="/stop";  
+  let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+SERVERAPI_PORT+"/stop";  
   logger.info(`Action add script -> live request to the SERVER API (${serveBaseUrl})`);
   const health = await getServerApiHealth(serveBaseUrl);                             
   return {
