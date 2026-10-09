@@ -49,7 +49,7 @@ gladys.onAction('backup_db', async () => {
   logger.info(`Action backup databases -> live request to the SERVER API (${url})`);
     const filePath = await downloadGzip(url);
   logger.info(`Action backup db- filePath> live request to the SERVER API (${filePath})`);
-    gladys.event.emit('gzip.downloaded', { filePath });
+    // gladys.event.emit('gzip.downloaded', { filePath });
  return {
     en: 'completed.',
     fr: 'effectué.'
