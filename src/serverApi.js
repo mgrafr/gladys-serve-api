@@ -10,6 +10,8 @@ export let SERVERAPI_PORT = 3004;
 const REQUEST_TIMEOUT_MS = 5_000;
 import path from 'path';
 import fs from 'fs';
+
+const gladys = new GladysIntegration();
 /**
 /*
 my-gladys-pdf-integration/
