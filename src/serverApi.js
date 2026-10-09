@@ -46,7 +46,7 @@ export async function downloadGzip(url) {
     throw new Error(`Erreur HTTP ${res.status}`);
   }
   const buffer = await res.arrayBuffer();
-  const filePath = path.join('/tmp', 'datas.tar.gz');
+  const filePath = path.join('/opt/server-api/backups/', 'datas.tar.gz');
   fs.writeFileSync(filePath, Buffer.from(buffer));
 logger.info(`download GZIP ->  (${filePath})`);
   return filePath;
