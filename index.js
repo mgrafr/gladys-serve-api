@@ -55,6 +55,14 @@ gladys.onAction('backup_db', async () => {
     fr: 'effectué.'
   };
 });
+/*
+// Exemple d'utilisation
+(async () => {
+    const res = await fetch("https://example.com/file.bin");
+    const arrayBuffer = await res.arrayBuffer();
+    downloadArrayBuffer(arrayBuffer, "output.bin");
+})();
+*/
 // --- Manifest action: "add script" button ---------------------
 gladys.onAction('add_script', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/script";  
