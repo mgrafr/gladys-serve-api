@@ -85,6 +85,20 @@ gladys.onAction('stop_server', async () => {
   };
 });
 // const scenes = new SceneBridge({ gladys : () => config });
+//
+gladys.onWidgetGet("link_backup-db", async ({ settings, language, units }) => {
+  const plan = await computePlan(settings.car);
+  return {
+    ttl_seconds: 300,
+    components: [
+      { type: "value", value: plan.targetPercent, unit: "%", label: { en: "Target", fr: "Objectif" }, color: "success" },
+      { type: "button", label: { en: "Link backup DB", fr: "Lien sauvegarde BD" }, style: "primary",
+        action: { key: "charge_now", params: {} } },
+    ],
+  };
+});
+
+
 
 // --- Graceful shutdown -------------------------------------------------------
 // The SDK stops the push subscriptions, disconnects cleanly and exits with
@@ -100,5 +114,4 @@ gladys.connect().catch((err) => {
   logger.error('Initial connection failed', err);
   process.exit(1);
 });
-// Facultatif : arrêt propre
-gladys.handleShutdown();
+
