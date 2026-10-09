@@ -39,11 +39,18 @@ return response;
 
 
 export async function downloadGzip(url) {
-  const res = await fetch(url);
-  logger.info(`download GZIP -> live request to the SERVER API (${res.status})`);
+   const res = await fetch(url);
+   const buffer = await res.arrayBuffer();
+
+// Exemple : sauvegarde locale
+await gladys.file.save({
+  name: 'datas.tar.gz',
+  data: Buffer.from(buffer)
+});
+  /*logger.info(`download GZIP -> live request to the SERVER API (${res.status})`);
   if (!res.ok) {
     throw new Error(`Erreur HTTP ${res.status}`);
-  }
+  }*/
 /*
     // Read the response body as ArrayBuffer 
   const buffer = await res.arrayBuffer();
@@ -54,6 +61,10 @@ export async function downloadGzip(url) {
   fs.writeFileSync(filePath, Buffer.from(buffer));
   return filePath;
   */
+  await gladys.notification.create({
+  title: "Téléchargement disponible",
+  text: "Clique ici : http://ip:3004/download"
+});  
 }
 
      
