@@ -49,22 +49,8 @@ gladys.onAction('backup_db', async () => {
   logger.info(`Action backup databases -> live request to the SERVER API (${url})`);
     const filePath = await downloadGzip(url);
     gladys.event.emit('gzip.downloaded', { filePath });
-    return {
-    en: `Database backup completed.`,
-    fr: `Sauvegarde des bases de données effectuée.`,
-  };
+ 
 });
-/*
-gladys.onAction('backup_db', async () => {
-  let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/backup";  
-  logger.info(`Action backup databases -> live request to the SERVER API (${serveBaseUrl})`);
-  const health = await getServerApi(serveBaseUrl);                             
-  return {
-    en: `Database backup completed.`,
-    fr: `Sauvegarde des bases de données effectuée.`,
-  };
-});
-*/
 // --- Manifest action: "add script" button ---------------------
 gladys.onAction('add_script', async () => {
   let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port+"/script";  
@@ -102,3 +88,5 @@ gladys.connect().catch((err) => {
   logger.error('Initial connection failed', err);
   process.exit(1);
 });
+// Facultatif : arrêt propre
+gladys.handleShutdown();
