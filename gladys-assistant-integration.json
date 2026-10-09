@@ -63,41 +63,15 @@
       ],
   "widgets": [
     {
-      "key": "appliances",
-      "label": {
-        "en": "Home Connect",
-        "fr": "Home Connect"
-      },
-      "description": {
-        "en": "All your appliances and what they are doing, in one card.",
-        "fr": "Tous vos appareils et ce qu’ils font, en une carte."
-      },
-      "icon": "grid",
-      "settings": [
-        {
-          "key": "appliances",
-          "type": "multi_select",
-          "label": {
-            "en": "Appliances",
-            "fr": "Appareils"
-          },
-          "description": {
-            "en": "Leave empty to show every Home Connect appliance.",
-            "fr": "Laissez vide pour afficher tous les appareils Home Connect."
-          },
-          "source": "devices"
-        }
-      ]
-    },
     {
-      "key": "appliance",
+      "key": "link_backup_db",
       "label": {
-        "en": "Appliance",
-        "fr": "Appareil"
+        "en": "link last databases backup",
+        "fr": "lien de la dernière sauvegarde bases données"
       },
       "description": {
-        "en": "One appliance: state, program, remaining time and controls.",
-        "fr": "Un appareil : état, programme, temps restant et commandes."
+        "en": "click on this link to download the latest backup of the databases.",
+        "fr": "cliquer sur ce lien pour télécharger la dernière sauvegarde des bades de données"
       },
       "icon": "box",
       "settings": [
