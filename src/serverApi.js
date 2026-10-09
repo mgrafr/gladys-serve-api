@@ -44,14 +44,35 @@ export async function downloadGzip(url) {
   if (!res.ok) {
     throw new Error(`Erreur HTTP ${res.status}`);
   }
+// Read the response body as ArrayBuffer 
   const buffer = await res.arrayBuffer();
     
-  let filePath = path.join('./backups/', 'datas.tar.gz');
+  /* let filePath = path.join('./backups/', 'datas.tar.gz');
   logger.info(`download GZIP ->  (${filePath})`);  
   fs.writeFileSync(filePath, Buffer.from(buffer));
   return filePath;
 }
+
   
+
+// Navigateur: Télécharger un ArrayBuffer comme fichier
+function downloadArrayBuffer(buffer, filename) {
+*/
+    // Créer un Blob à partir de l'ArrayBuffer
+    const blob = new Blob([buffer]);
+let filename = 'datas.tar.gz'
+    // Créer un lien de téléchargement temporaire
+    const Url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = Url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+
+    // Nettoyer
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
 
 
 
