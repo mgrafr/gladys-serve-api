@@ -49,7 +49,10 @@ gladys.onAction('backup_db', async () => {
   logger.info(`Action backup databases -> live request to the SERVER API (${url})`);
     const filePath = await downloadGzip(url);
     gladys.event.emit('gzip.downloaded', { filePath });
- 
+ return {
+    en: 'completed.',
+    fr: 'effectué.'
+  };
 });
 // --- Manifest action: "add script" button ---------------------
 gladys.onAction('add_script', async () => {
