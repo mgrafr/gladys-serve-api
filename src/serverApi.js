@@ -41,12 +41,12 @@ return response;
 export async function downloadGzip(url) {
   const res = await fetch(url);
   logger.info(`download GZIP -> live request to the SERVER API (${res.status})`);
-
   if (!res.ok) {
     throw new Error(`Erreur HTTP ${res.status}`);
   }
   const buffer = await res.arrayBuffer();
-  let filePath = path.join('/opt/server-api/backups/', 'datas.tar.gz');
+    
+  let filePath = path.join('./backups/', 'datas.tar.gz');
   logger.info(`download GZIP ->  (${filePath})`);  
   fs.writeFileSync(filePath, Buffer.from(buffer));
   return filePath;
