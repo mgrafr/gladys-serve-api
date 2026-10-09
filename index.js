@@ -52,7 +52,7 @@ gladys.onAction('backup_db', async () => {
     // gladys.event.emit('gzip.downloaded', { filePath });
  return {
     en: 'completed.',
-    fr: 'effectué.'
+    fr: 'sauvegarde effectuée, lien (${url})'
   };
 });
 /*
@@ -98,7 +98,11 @@ gladys.onWidgetGet("link_backup-db", async ({ settings, language, units }) => {
   };
 });
 
-
+// Un bouton qui vous rappelle. `params` vient du contenu que vous avez envoyé, jamais d'une saisie utilisateur.
+gladys.onWidgetAction("link_backup-db", async (actionKey, params, { settings }) => {
+  await startCharge(settings.car);
+  return { en: "Charging started", fr: "Charge lancée" };
+});
 
 // --- Graceful shutdown -------------------------------------------------------
 // The SDK stops the push subscriptions, disconnects cleanly and exits with
