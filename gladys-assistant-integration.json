@@ -63,7 +63,6 @@
       ],
   "widgets": [
     {
-    {
       "key": "link_backup_db",
       "label": {
         "en": "link last databases backup",
