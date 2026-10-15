@@ -17,8 +17,8 @@
 
 import { GladysIntegration, logger } from '@gladysassistant/integration-sdk';
 import { normalizeConfig } from './src/config.js';
-import { getServerApi, downloadGzip, SERVERAPI_INTERNAL_URL, SERVERAPI_PORT } from './src/serverApi.js';
-// import { SceneBridge } from './src/scenes.js';
+import { getServerApi, getBackupUrl(), SERVERAPI_INTERNAL_URL, SERVERAPI_PORT } from './src/serverApi.js';
+
 const gladys = new GladysIntegration();
 
 // Current configuration (hot-reloaded via onConfigUpdated).
@@ -26,8 +26,6 @@ let config = normalizeConfig();
 let port = SERVERAPI_PORT.toString();
 // Cleanup functions for the "push" subscriptions (e.g. the motion sensor).
 let pushCleanups = [];
-
-//const CONTAINER_NAME = 'server-api';
 
 // --- Manifest action: "Check server-api" button ---------------------
 gladys.onAction('test_server', async () => {
@@ -47,9 +45,9 @@ let serveBaseUrl = SERVERAPI_INTERNAL_URL+":"+port;
 gladys.onAction('backup_db', async () => {
  let url = SERVERAPI_INTERNAL_URL+":"+port+"/backup";  
   logger.info(`Action backup databases -> live request to the SERVER API (${url})`);
-    const filePath = await downloadGzip(url);
+    const filePath = await getBackupUrl(url);
   logger.info(`Action backup db- filePath> live request to the SERVER API (${filePath})`);
-    // gladys.event.emit('gzip.downloaded', { filePath });
+  
  return {
     en: 'completed.',
     fr: 'sauvegarde effectuée, lien (${url})'
@@ -84,14 +82,13 @@ gladys.onAction('stop_server', async () => {
     fr: `Arrêt du serveur effectué.`,
   };
 });
-// const scenes = new SceneBridge({ gladys : () => config });
 //
 gladys.onWidgetGet("link_backup-db", async ({ settings, language, units }) => {
-  const plan = await computePlan(settings.car);
+  const plan = await downloadGzip(url);
   return {
     ttl_seconds: 300,
     components: [
-      { type: "value", value: plan.targetPercent, unit: "%", label: { en: "Target", fr: "Objectif" }, color: "success" },
+      { type: "text", label: { en: "Target", fr: "Objectif" }, color: "success" },
       { type: "button", label: { en: "Link backup DB", fr: "Lien sauvegarde BD" }, style: "primary",
         action: { key: "charge_now", params: {} } },
     ],

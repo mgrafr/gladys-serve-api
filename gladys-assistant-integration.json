@@ -3,7 +3,7 @@
   "type": "provider",
   "name": "Serveur API",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
+    "en": "Starter template showing sensors, switches (including custom switch), a dimmable light and a smart plug.",
     "fr": "Nodejs API server for running external scripts."
   },
   "version": "1.0.0",
