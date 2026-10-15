@@ -38,24 +38,11 @@ export async function getServerApi(baseUrl) {
 return response;
 }
 
-
-export async function downloadGzip(url) {
-   const res = await fetch(url);
- 
-  logger.info(`download GZIP -> live request to the SERVER API (${res.status})`);
-  if (!res.ok) {
-    throw new Error(`Erreur HTTP ${res.status}`);
+export function getBackupUrl() {
+    return `${SERVERAPI_INTERNAL_URL}:${SERVERAPI_PORT}/download`;
   }
-/*
-    // Read the response body as ArrayBuffer 
-  const buffer = await res.arrayBuffer();
-    
-  let filePath = path.join('./backups/', 'datas.tar.gz');
-  
-  logger.info(`download GZIP ->  (${filePath})`);  
-  fs.writeFileSync(filePath, Buffer.from(buffer));
-  return filePath;
-  */
+
+
   await notification.create({
   title: "Téléchargement disponible",
   text: "Clique ici : http://ip:3004/download"
