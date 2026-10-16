@@ -38,11 +38,16 @@ export async function getServerApi(baseUrl) {
 return response;
 }
 
-export function getBackupUrl() {
+/*export function getBackupUrl() {
     return `${SERVERAPI_INTERNAL_URL}:${SERVERAPI_PORT}/download`;
   }
-
-
+*/
+export async function getBackupUrl(url) {
+   const res = await fetch(url);
+   logger.info(`getBackupUrl -> live request to the SERVER API (${res.status})`);
+  if (!res.ok) {
+    throw new Error(`Erreur HTTP ${res.status}`);
+  }
 
 
      
