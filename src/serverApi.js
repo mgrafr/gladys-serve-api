@@ -43,10 +43,7 @@ export function getBackupUrl() {
   }
 
 
-  await notification.create({
-  title: "Téléchargement disponible",
-  text: "Clique ici : http://ip:3004/download"
-});  
+
 
      
   
