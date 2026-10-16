@@ -47,7 +47,6 @@ export function getBackupUrl() {
   title: "Téléchargement disponible",
   text: "Clique ici : http://ip:3004/download"
 });  
-}
 
      
   
