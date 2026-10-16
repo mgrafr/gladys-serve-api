@@ -3,8 +3,8 @@
   "type": "provider",
   "name": "Serveur API",
   "description": {
-    "en": "Starter template showing sensors, switches (including custom switch), a dimmable light and a smart plug.",
-    "fr": "Nodejs API server for running external scripts."
+    "en": "NodejsAPI  server for running externals scripts.",
+    "fr": "Nodejs serveur API por l'exécution de escrips externes."
   },
   "version": "1.0.0",
   "docker_image": "ghcr.io/mgrafr/gladys-serve-api:1.0.1",
